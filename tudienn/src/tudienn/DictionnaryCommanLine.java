@@ -32,9 +32,10 @@ public class DictionnaryCommanLine {
     }
     public static void dictionaryAdvanced(){
         Dictionary d = dictionaryManagement.insertFromFile();
-        showAllWords(d);
+        //showAllWords(d);
+        dictionaryManagement.dictionaryLookup(d);
     }
     public static void main(String[] args) {
-        dictionaryBasic();
+        dictionaryAdvanced();
     }
 }

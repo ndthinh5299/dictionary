@@ -81,7 +81,20 @@ public class DictionaryManagement {
         d.setWords(listWords);
         return d;
     }
-    public String dictionaryLookup(ArrayList<Word> ws ,String s){
-        List<String>
+    public void dictionaryLookup( Dictionary d){
+       Scanner input = new Scanner(System.in);
+        System.out.println("Nhap tu can tra cuu: ");
+       String s = input.nextLine();
+       boolean check = false;
+       for(Word w : d.getWords()){
+           if(w.getWord_target().equals(s)){
+               check = true;
+               if(check) System.out.println( "tieng viet: "+w.getWord_explain());
+               break;
+           } 
+        
     }
+      
+           if(!check) System.out.println("khong tim dc tu");
+}
 }
