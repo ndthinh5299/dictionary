@@ -6,12 +6,12 @@
 package tudienn;
 
 /**
- *
+ *class Word gồm 2 thuộc tính word_target(từ mới), và word_explain(từ giải nghĩa)
  * @author thinhnguyen
  */
 public class Word {
-   private String word_target;
-   private String word_explain;
+   private String word_target; // từ mới
+   private String word_explain; // giải nghĩa 
 
     public String getWord_target() {
         return word_target;

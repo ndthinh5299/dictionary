@@ -13,7 +13,10 @@ import java.util.List;
  */
 public class DictionnaryCommanLine {
     private static DictionaryManagement dictionaryManagement = new  DictionaryManagement();
-            
+ /**
+  * Hàm hiển thị tất cả cá word của từ điển
+  * @param dictionary 
+  */
     public static void showAllWords(Dictionary dictionary){
         List<Word> ws = dictionary.getWords();
         System.out.println("No\t |English \t |Vietnamese");
@@ -25,6 +28,7 @@ public class DictionnaryCommanLine {
 //            System.out.println( "\t "+ w.getWord_target() +"\t "+w.getWord_explain());
 //        }
     }
+    
     public static void dictionaryBasic() {
         Dictionary d = dictionaryManagement.insertFromCommandline();
         showAllWords(d);
