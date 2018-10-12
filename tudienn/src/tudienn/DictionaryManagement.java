@@ -58,7 +58,7 @@ Dòng 2: Nhập giải thích sang tiếng Việt
         List<Word> listWords= new ArrayList<Word>();
         BufferedReader br = null;
         try{
-            br = new BufferedReader(new FileReader("E_V.txt"));
+            br = new BufferedReader(new FileReader("D:\\GITHUB\\dictionary\\tudienn\\src\\tudienn\\E_V.txt"));
             String textInLine;
             while((textInLine = br.readLine()) != null){
                 Word word = new Word();

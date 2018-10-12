@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
@@ -7,8 +8,44 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="giaodien.DictionaryApplicationController">
-    <stylesheets>
-        <URL value="@dictionaryapplication.css"/>
-    </stylesheets>
-</AnchorPane>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="1031.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar prefHeight="21.0" prefWidth="1031.0" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="thêm từ">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="sửa từ ">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="xóa từ">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <Pane prefHeight="543.0" prefWidth="348.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="80.0" layoutY="23.0" text="Nhập từ" />
+            <TextField layoutX="14.0" layoutY="60.0" />
+            <Button layoutX="238.0" layoutY="60.0" mnemonicParsing="false" text="Search" />
+            <ScrollPane layoutX="-1.0" layoutY="91.0" prefHeight="453.0" prefWidth="353.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+              </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+   </left>
+   <right>
+      <WebView prefHeight="501.0" prefWidth="467.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>
