@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="341.0" prefWidth="515.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="230.0" layoutY="228.0" mnemonicParsing="false" text="thêm" />
+      <TextField fx:id="wTarget" layoutX="30.0" layoutY="140.0" />
+      <TextField fx:id="wExplain" layoutX="306.0" layoutY="140.0" />
+      <Label layoutX="102.0" layoutY="96.0" text="từ mới" />
+      <Label layoutX="365.0" layoutY="96.0" text="giải nghĩa " />
+   </children>
+</AnchorPane>
