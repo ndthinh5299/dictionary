@@ -9,9 +9,13 @@ import com.sun.speech.freetts.VoiceManager;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +69,10 @@ Dòng 2: Nhập giải thích sang tiếng Việt
         List<Word> listWords= new ArrayList<Word>();
         BufferedReader br = null;
         try{
-            br = new BufferedReader(new FileReader("D:\\GITHUB\\dictionary\\tudienn\\src\\tudienn\\E_V.txt"));
+             File file = new File("E_V.txt");
+             
+              
+            br = new BufferedReader(new InputStreamReader(new FileInputStream(file),"UTF8"));
             String textInLine;
             while((textInLine = br.readLine()) != null){
                 Word word = new Word();
@@ -98,7 +105,7 @@ Dòng 2: Nhập giải thích sang tiếng Việt
  * @param d 
  */    
     public Word dictionaryLookup(String s, Dictionary d){
-       Scanner input = new Scanner(System.in);
+      // Scanner input = new Scanner(System.in);
        // System.out.println("Nhap tu can tra cuu: ");
        
       // String s = input.nextLine();
@@ -114,7 +121,8 @@ Dòng 2: Nhập giải thích sang tiếng Việt
         
     }
         
-            return new Word("", "khong tim dc tu");
+          return new Word("", "khong tim dc tu");
+          //return null;
 }
     public Dictionary AddWord(String wTarget, String wExplain,Dictionary d){
         Word w = new Word();
@@ -127,13 +135,83 @@ Dòng 2: Nhập giải thích sang tiếng Việt
         w.setWord_target(wTarget);
         d.getWords().add(w);
         //ghi vao file
+//        BufferedWriter bw = null;
+//        FileWriter fw = null;
+//        try {
+//            File file = new File("D:\\GITHUB\\asg1-thinh-linh\\tudienn\\src\\tudienn\\E_V.txt");
+//             fw = new FileWriter(file.getAbsoluteFile(), true);
+//             bw = new BufferedWriter(fw);
+//             bw.write("\n"+wTarget+wExplain);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }finally{
+//        try {
+//            if(bw != null)
+//                bw.close();
+//            if(fw!=null)
+//                fw.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+        return d;
+        
+        
+        
+    }
+    public List<String> dictionarySearcher(Dictionary d ,String s){
+        List<String> dsList = new ArrayList<String>();
+        for(Word w : d.getWords()){
+            if(w.getWord_target().indexOf(s) ==0 ){
+                dsList.add(w.getWord_target());
+            }
+        }
+        return dsList;
+    }
+     public void speech(String text){
+        VoiceManager voiceManager = VoiceManager.getInstance();
+        com.sun.speech.freetts.Voice sVoice = voiceManager.getVoice("kevin16");
+        sVoice.allocate();
+        sVoice.speak(text);
+        sVoice.deallocate();
+    }
+    public Dictionary DelWord(String s, Dictionary d){
+       Word w = this.dictionaryLookup(s, d);
+        //if(w.getWord_explain().equals("khong tim dc tu")) return d;
+        //else {
+            d.getWords().remove(w);
+            return d;
+        }
+    
+    public Dictionary EditWord(String wE, String editWT, String editWE, Dictionary d){
+        Word word = this.dictionaryLookup(wE, d);
+        if(word.getWord_explain().equals("khong tim dc tu")) return d;
+        else if(editWT == ""){
+            for(Word w: d.getWords()){
+                if(w.getWord_target().equals(wE)){
+                    
+                }
+            }
+        }
+        return d;
+    }
+    /**
+     * 
+     * @param d 
+     */
+    public void dictionaryExportToFile(Dictionary d){
         BufferedWriter bw = null;
         FileWriter fw = null;
         try {
-            File file = new File("D:\\GITHUB\\dictionary\\tudienn\\src\\tudienn\\E_V.txt");
-             fw = new FileWriter(file.getAbsoluteFile(), true);
-             bw = new BufferedWriter(fw);
-             bw.write("\n"+wTarget+wExplain);
+            
+            File file = new File("E_V.txt");
+            bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file),"UTF8"));
+            //fw = new FileWriter(file.getAbsoluteFile());
+           // bw = new BufferedWriter(fw);
+            List<Word> wordsToFile = d.getWords();
+             for(Word w: wordsToFile){
+                 bw.write(w.getWord_target()+w.getWord_explain()+"\n");
+             }
         } catch (Exception e) {
             e.printStackTrace();
         }finally{
@@ -146,21 +224,6 @@ Dòng 2: Nhập giải thích sang tiếng Việt
             e.printStackTrace();
         }
     }
-        return d;
-        
-        
-        
     }
-     public void speech(String text){
-        VoiceManager voiceManager = VoiceManager.getInstance();
-        com.sun.speech.freetts.Voice sVoice = voiceManager.getVoice("kevin16");
-        sVoice.allocate();
-        sVoice.speak(text);
-        sVoice.deallocate();
-    }
-    public Dictionary DelWord(Dictionary d){
-       return null; 
-    }
-    
     
 } 
